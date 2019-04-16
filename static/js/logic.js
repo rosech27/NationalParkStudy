@@ -227,32 +227,53 @@ var nat_mon = [
         {Name:"World War II Memorial", Location: [38.889, -77.040], Date_established:"May 29, 2004", Description:"Over 16 million veterans served during World War II from 1941 to 1945 alongside the Allies against the Axis powers. The memorial recognizes their service with two triumphal arches representing the Atlantic and Pacific theaters, surrounded by 56 pillars for the states and territories. At the center is a pool with an oval of fountains, on the east are walls engraved with scenes of war, and on the west is a wall with 4,048 gold stars representing the more than 400,000 killed in action.[35]"},
         {Name:"Wright Brothers", Location: [36.014, -75.668], Date_established:"March 2, 1927", Description:"Wilbur and Orville Wright made the first powered flight with the Wright Flyer at Kill Devil Hills near Kitty Hawk in 1903, developing it into the first fixed-wing aircraft, the Wright Flyer III. A monument tower representing a wing commemorates their achievement and earlier aviation experimenters. Paths outline the routes of the first flights near a reproduction hangar.[36]"}
         ];
+
+// green marker icon parks
+var greenIcon = new L.Icon({
+  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+// yellow marker icon memorials
+var redIcon = new L.Icon({
+iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+iconSize: [25, 41],
+iconAnchor: [12, 41],
+popupAnchor: [1, -34],
+shadowSize: [41, 41]
+});
+
 // An array which will be used to store created cityMarkers
 var cityMarkers = [];
 
 for (var i = 0; i < nat_parks.length; i++) {
-  // loop through the cities array, create a new marker, push it to the cityMarkers array
-  cityMarkers.push(
-    L.marker(nat_parks[i].Location).bindPopup("<h1>" + nat_parks[i].Name + "</h1>" + "<br>" +  "Date Established: " + nat_parks[i].DateEstablished + "<br>" + "2018 Reported Visitors: " + nat_parks[i].RecreationVisitors)
-  );
+// loop through the cities array, create a new marker, push it to the cityMarkers array
+cityMarkers.push(
+  L.marker(nat_parks[i].Location, {icon: greenIcon}).bindPopup("<h1>" + nat_parks[i].Name + "</h1>" + "<br>" +  "Date Established: " + nat_parks[i].DateEstablished + "<br>" + "2018 Reported Visitors: " + nat_parks[i].RecreationVisitors + "<br>" + "Description: " + nat_parks[i].Description)
+);
 }
 var monumentMarkers = [];
 
 for (var i = 0; i < nat_mon.length; i++) {
-  // loop through the cities array, create a new marker, push it to the cityMarkers array
-  monumentMarkers.push(
-    L.marker(nat_mon[i].Location).bindPopup("<h1>" + nat_mon[i].Name + "</h1>" + "<br>" +  "Date Established: "  + nat_mon[i].DateEstablished + "<br>" + "Description: " + nat_mon[i].Description)
-  );
+// loop through the cities array, create a new marker, push it to the cityMarkers array
+monumentMarkers.push(
+  L.marker(nat_mon[i].Location, {icon: redIcon}).bindPopup("<h1>" + nat_mon[i].Name + "</h1>" + "<br>" +  "Date Established: "  + nat_mon[i].DateEstablished + "<br>" + "Description: " + nat_mon[i].Description)
+);
 }
 
 // An array which will be used to store created cityMarkers
 var memorialMarkers = [];
 
 for (var i = 0; i < memorials.length; i++) {
-  // loop through the cities array, create a new marker, push it to the cityMarkers array
-  memorialMarkers.push(
-    L.marker(memorials[i].Location).bindPopup("<h1>" + memorials[i].Name + "</h1>" + "<br>" + "Date Established: " + memorials[i].Date_established + "<br>" + "Description: " + memorials[i].Description)
-  );
+// loop through the cities array, create a new marker, push it to the cityMarkers array
+memorialMarkers.push(
+  L.marker(memorials[i].Location).bindPopup("<h1>" + memorials[i].Name + "</h1>" + "<br>" + "Date Established: " + memorials[i].Date_established + "<br>" + "Description: " + memorials[i].Description)
+);
 }
 // Add all the cityMarkers to a new layer group.
 // Now we can handle them as one group instead of referencing each individually
@@ -297,3 +318,21 @@ var myMap = L.map("map", {
 // Pass our map layers into our layer control
 // Add the layer control to the map
 L.control.layers(baseMaps, overlayMaps).addTo(myMap);
+
+// Create a legend to display information about our map
+var legend = L.control({
+  position: "bottomright"
+});
+
+legend.onAdd = function() {
+  var div = L.DomUtil.create("div", "legend");
+
+    // loop through our colors and generate a label with a colored square for each park
+    // for (var i = 0; i < grades.length; i++) {
+      div.innerHTML += '<i style="background:' + "Green" + '"></i> ' + 'National Park' + '<br>';
+      div.innerHTML += '<i style="background:' + "Red" + '"></i> ' + 'National Monuments' + '<br>';
+      div.innerHTML += '<i style="background:' + "Blue" + '"></i> ' + 'National Memorials' + '<br>';
+  return div;
+};
+
+legend.addTo(myMap);
