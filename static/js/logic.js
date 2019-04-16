@@ -254,7 +254,7 @@ var cityMarkers = [];
 for (var i = 0; i < nat_parks.length; i++) {
 // loop through the cities array, create a new marker, push it to the cityMarkers array
 cityMarkers.push(
-  L.marker(nat_parks[i].Location, {icon: greenIcon}).bindPopup("<h1>" + nat_parks[i].Name + "</h1>" + "<br>" +  "Date Established: " + nat_parks[i].DateEstablished + "<br>" + "2018 Reported Visitors: " + nat_parks[i].RecreationVisitors + "<br>" + "Description: " + nat_parks[i].Description)
+  L.marker(nat_parks[i].Location, {icon: greenIcon}).bindPopup("<h1>" + nat_parks[i].Name + "</h1>" + "Date Established: " + nat_parks[i].DateEstablished + "<br>" + "2018 Reported Visitors: " + nat_parks[i].RecreationVisitors + "<br>" + "Description: " + nat_parks[i].Description)
 );
 }
 var monumentMarkers = [];
@@ -262,7 +262,7 @@ var monumentMarkers = [];
 for (var i = 0; i < nat_mon.length; i++) {
 // loop through the cities array, create a new marker, push it to the cityMarkers array
 monumentMarkers.push(
-  L.marker(nat_mon[i].Location, {icon: redIcon}).bindPopup("<h1>" + nat_mon[i].Name + "</h1>" + "<br>" +  "Date Established: "  + nat_mon[i].DateEstablished + "<br>" + "Description: " + nat_mon[i].Description)
+  L.marker(nat_mon[i].Location, {icon: redIcon}).bindPopup("<h1>" + nat_mon[i].Name + "</h1>" + "Date Established: " + nat_mon[i].DateEstablished + "<br>" + "Description: " + nat_mon[i].Description)
 );
 }
 
@@ -272,7 +272,7 @@ var memorialMarkers = [];
 for (var i = 0; i < memorials.length; i++) {
 // loop through the cities array, create a new marker, push it to the cityMarkers array
 memorialMarkers.push(
-  L.marker(memorials[i].Location).bindPopup("<h1>" + memorials[i].Name + "</h1>" + "<br>" + "Date Established: " + memorials[i].Date_established + "<br>" + "Description: " + memorials[i].Description)
+  L.marker(memorials[i].Location).bindPopup("<h1>" + memorials[i].Name + "</h1>" + "Date Established: " + memorials[i].Date_established + "<br>" + "Description: " + memorials[i].Description)
 );
 }
 // Add all the cityMarkers to a new layer group.
