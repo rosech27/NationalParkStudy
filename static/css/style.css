@@ -1,0 +1,64 @@
+/* remove default margin and padding from body */
+body {
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* set map, body, and html to 100% of the screen size */
+
+  body, html {
+    height: 100%;
+    width: 100%;
+    /* padding:10px 5px 10px 5px; */
+    /* padding: 10% 10% 10% 10% */
+    /* padding-left: 5%;
+    padding-top: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%; */
+  }
+
+  #map {
+    width: 100%;
+    height: 100%;
+    
+  }
+
+  /* #map {
+    position: relative;
+    border: 1px solid black;
+    border-radius: 8px;
+    height: 400px;  /* or as desired */
+    /* This means "100% of the width of its container", the .col-md-8 */
+  /* }  */
+
+  .center {
+    margin: auto;
+    border: 3px solid #73AD21;
+    padding: 10%;
+  }
+
+  /* #map-container{
+
+    padding-top:120px;
+    padding-left:10px;
+
+} */
+
+  /* #map {
+    width: 100%;
+    height: 100%;
+    border: 3px solid #73AD21;
+  } */
+
+  /* #map {
+    height: 90%;
+    width: 90%;
+    padding:10px 5px 10px 5px;
+    padding: 10% 10% 10% 10%;
+  } */
+  /* .center {
+    margin: auto;
+    /* width: 50%; */
+    /* border: 3px solid #73AD21;
+    padding: 10%;
+  } */ 
