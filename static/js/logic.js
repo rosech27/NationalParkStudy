@@ -312,12 +312,16 @@ var overlayMaps = {
 var myMap = L.map("map", {
   center: [37.6648212, -97.7238879],
   zoom: 4,
+  zoomControl: false,
   layers: [light]
 });
 
 // Pass our map layers into our layer control
 // Add the layer control to the map
 L.control.layers(baseMaps, overlayMaps).addTo(myMap);
+
+var zoomHome = L.Control.zoomHome();
+zoomHome.addTo(myMap);
 
 // Create a legend to display information about our map
 var legend = L.control({
