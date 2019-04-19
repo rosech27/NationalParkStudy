@@ -238,7 +238,7 @@ var greenIcon = new L.Icon({
   shadowSize: [41, 41]
 });
 
-// yellow marker icon memorials
+// red marker icon memorials
 var redIcon = new L.Icon({
 iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
 shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -312,12 +312,17 @@ var overlayMaps = {
 var myMap = L.map("map", {
   center: [37.6648212, -97.7238879],
   zoom: 4,
+  zoomControl: false,
   layers: [light]
 });
 
 // Pass our map layers into our layer control
-// Add the layer control to the map
 L.control.layers(baseMaps, overlayMaps).addTo(myMap);
+
+
+// Pass the zoom home and add to myMap
+var zoomHome = L.Control.zoomHome();
+zoomHome.addTo(myMap);
 
 // Create a legend to display information about our map
 var legend = L.control({
