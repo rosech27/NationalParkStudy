@@ -1,15 +1,22 @@
-<<<<<<< HEAD
-# Import Dependencies 
-from flask import Flask, render_template, redirect
-# Import our pymongo library, which lets us connect our Flask app to our Mongo database.
-from flask_pymongo import PyMongo
+# import necessary libraries
+from flask import (
+    Flask,
+    render_template,
+    jsonify,
+    request,
+    redirect)
+import top10yoy
+import json
+
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine
 import pandas as pd
 import pymongo
+from flask_pymongo import PyMongo
 
-# Hidden authetication file
-#import config 
-
-# Create an instance of Flask app
+#################################################
+# Flask Setup
+#################################################
 app = Flask(__name__)
 # Create connection variable
 # conn = 'mongodb://localhost:27017'
@@ -36,32 +43,6 @@ mongo.db.collection.insert_many(data)
 # mongo.db.collection.update({}, data, upsert=True)
 
 # Create route that renders index.html template
-@app.route("/")
-def root():
-    
-    return render_template('index.html')
-
-if __name__ == "__main__":
-    app.run(debug=True)
-=======
-# import necessary libraries
-from flask import (
-    Flask,
-    render_template,
-    jsonify,
-    request,
-    redirect)
-import top10yoy
-import json
-
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import create_engine
-
-#################################################
-# Flask Setup
-#################################################
-app = Flask(__name__)
-
 
 # create route that renders index.html template
 @app.route("/")
@@ -98,4 +79,3 @@ def top10():
 
 if __name__ == "__main__":
     app.run()
->>>>>>> 23b9a8fdfc2c924e1172acee84c0f13ea7bcd471

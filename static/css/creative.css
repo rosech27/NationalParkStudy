@@ -143,6 +143,11 @@ body {
   opacity: 0.7;
 }
 
+a.leaflet-control-zoomhome-in,
+a.leaflet-control-zoomhome-out {
+font-size: 1.5em;
+line-height: 26px;
+}
 
 hr {
   -webkit-box-sizing: content-box;
